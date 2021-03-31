@@ -27,8 +27,8 @@ class Regex:
         import re
         l = ['ad', 'add', 'abc', 'acdf', 'aaff', 'cdd']
         pat = "[ac]{2,3}[df]{2,3}"
-        solution = ['create list with solutions']
-        print(solution)
+        solution = [word for word in l if re.match(pat, word)]
+        #print(solution)
         return solution
 
 
@@ -36,71 +36,80 @@ class Regex:
         """Given this pattern, [A-Z]?[0-9a-z]{3} which of the search strings will match?"""
         l = ['ad', 'add', 'A000', 'gggg', 'ggggH', 'Q12H', 'R0v1', '15bb']
         pat = "[A-Z]?[0-9a-z]{3}"
-        solution = ['create list with solutions']
+        expected = ['add', 'A000', 'gggg', 'ggggH', 'R0v1', '15bb']
+        solution = [word for word in l if re.match(pat, word)]
         print(solution)
+        assert (solution == expected)
         return solution
 
 
     def vraag4(self):
         """Given these strings, what pattern will describe them all?"""
         l = ["aaa", "aba", "aca", "ada"]
-        pat = "here your pattern"
+        pat = "^a[abcd]a$"
         solution = [word for word in l if re.match(pat, word)]
-        print(solution)
+        assert (solution == l)
         return solution
 
 
     def vraag5(self):
         """Given these strings, what pattern will describe them all?"""
         l = ["aad", "aAd", "a2d", "a6D"]
-        pat = "here your pattern"
+        pat = "^a[aA26][dD]$"
         solution = [word for word in l if re.match(pat, word)]
-        print(solution)
+        assert (solution == l)
+        #print(solution)
         return solution
 
 
     def vraag6(self):
         """Given these strings, what pattern will describe them all?"""
         l = ["aaad", "aAddd", "aaa2ddd", "a6dD"]
-        pat = "here your pattern"
-        solution = [word for word in l if re.match(pat, word)]
-        print(solution)
+        pat = "^a[aAd26]+[dD]$"
+        solution = [word for word in l if re.match(pat, word)] 
+        assert (solution == l)
+
+        #print(solution)
         return solution
 
 
     def vraag7(self):
         """Given these strings, what pattern will describe them all?"""
         l = ["12a34", "254a1", "011aa56", "878a9"]
-        pat = "here your pattern"
-        solution = [word for word in l if re.match(pat, word)]
-        print(solution)
+        pat = "^\d{2,3}a+\d{,2}$"
+        solution = [word for word in l if re.match(pat, word)] 
+        assert (solution == l)
+        #print(solution)
         return solution
 
 
     def vraag8(self):
         """Given these strings, what pattern will describe them all?"""
         l = ["1 &abcdefghijklm", "2 &abcdefgh", "3 &abcdefghi", "4 &abcd"]
-        pat = "here your pattern"
-        solution = [word for word in l if re.match(pat, word)]
-        print(solution)
+        pat = "^[1234] \&[a-z]+$"
+        solution = [word for word in l if re.match(pat, word)] 
+        assert (solution == l)
+        #print(solution)
         return solution
 
 
     def vraag9(self):
         """Given these strings, what pattern will describe them all?"""
         l = ["foo 123|", "bar 211\\", "baz 2339|", "eek 831\\"]
-        pat = "here your pattern"
+        pat = r"^[a-z]{3} \d{3,}[\\\|]+$"
         solution = [word for word in l if re.match(pat, word)]
-        print(solution)
+        #print(solution)
+        assert (solution == l)
         return solution
 
 
     def vraag10(self):
         """Given these strings, what pattern will describe them all?"""
         l = ["01 Rose programmeur","02 Reindert programmeur","32 Piet systeemmanager","42 Marcel ontwikkelaar"]
-        pat = "here your pattern"
+        pat = "^\d{2} [A-Z][a-z]+ [a-z]+r$"
         solution = [word for word in l if re.match(pat, word)]
-        print(solution)
+        #print(solution)
+        assert (solution == l)
         return solution
 
 
@@ -115,9 +124,11 @@ class Regex:
         """
         # DNA alignment of transcription factor binding sites
         l = ["GAGAGCTCA","GAGAAGCTCA","GAGAGGCTCA","AAGAAGGCTCA","AAGAAGCTCA"]
-        pat = "here your pattern"
+        pat = "[GA]AGA{1,2}G{1,2}CTCA"
         solution = [word for word in l if re.match(pat, word)]
-        print(solution)
+
+        #print(solution)
+        assert (solution == l)
         return solution
         
 
@@ -131,8 +142,8 @@ class Regex:
 
         “QLHAHAHGL”,“Q-HIHSHGL”,“QIHVHTHAL”,“NLHAHSHGI”,“N-HIHAHAI”,“QIHAHAHAL”
         """
-        l = ["here the allignments"]
-        pat = "here your pattern"
+        l = [“QLHAHAHGL”,“QHIHSHGL”,“QIHVHTHAL”,“NLHAHSHGI”,“NHIHAHAI”,“QIHAHAHAL”]
+        pat = r"^[QN]$"
         solution = [word for word in l if re.match(pat, word)]
         print(solution)
         return solution
@@ -178,19 +189,3 @@ class Regex:
         solution = [word for word in sl if re.match(pat, word)]
         print(solution)
         return solution
-
-r = Regex()
-r.vraag1()
-r.vraag2()
-r.vraag3()
-r.vraag4()
-r.vraag5()
-r.vraag6()
-r.vraag7()
-r.vraag8()
-r.vraag9()
-r.vraag10()
-r.vraag11()
-r.vraag12()
-r.vraag13()
-r.vraag14()
